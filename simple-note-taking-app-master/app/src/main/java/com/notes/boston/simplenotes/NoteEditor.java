@@ -55,6 +55,8 @@ public class NoteEditor extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.itemSave){
+
+
             if(col_ID == 1) {
                 long add = dbHelper.insertNote(db, conTitle.getText().toString(), conBody.getText().toString());
 
@@ -65,9 +67,10 @@ public class NoteEditor extends AppCompatActivity {
             else
             {
                 boolean update = dbHelper.updateNote(db, col_ID ,conTitle.getText().toString(), conBody.getText().toString());
-                Toast.makeText(this, "Note has been updated!", Toast.LENGTH_SHORT).show();
-
-                this.finish();
+                if (update) {
+                    Toast.makeText(this, "Note has been updated!", Toast.LENGTH_SHORT).show();
+                    this.finish();
+                }else{}
             }
         }
 
